@@ -11,6 +11,12 @@
 
 #include <Plasma5Support/DataEngine>
 
+#include "config-X11.h"
+
+#if WITH_X11
+class CursorNotificationHandler;
+#endif
+
 class MouseEngine : public Plasma5Support::DataEngine
 {
     Q_OBJECT
@@ -31,4 +37,7 @@ private Q_SLOTS:
 private:
     QPoint lastPosition;
     int timerId;
+#if WITH_X11
+    CursorNotificationHandler *handler;
+#endif
 };
